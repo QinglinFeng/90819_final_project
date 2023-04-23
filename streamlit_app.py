@@ -11,11 +11,13 @@ data = pd.read_csv("merge_classified.csv")
 
 # Set up Streamlit app
 st.title("Weather and Crime Analysis")
-st.write("Use the dropdown menu to select a specific crime category or reset to display all crimes. The visualizations will be updated accordingly.")
 
 # Show data
 st.write("## Data")
 st.write(data)
+
+st.write("Use the dropdown menu to select a specific crime category or reset to display all crimes. The visualizations will be updated accordingly.")
+
 
 # Create a dropdown menu for selecting the crime category
 crime_categories = data['Generalized_Offense'].unique().tolist()
