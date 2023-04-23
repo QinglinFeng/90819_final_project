@@ -1,18 +1,3 @@
-import importlib.util
-import subprocess
-import sys
-
-def check_and_install(package):
-    spec = importlib.util.find_spec(package)
-    if spec is None:
-        print(f"{package} not found. Installing...")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-    else:
-        print(f"{package} is already installed.")
-
-# Check and install required packages
-check_and_install("seaborn")
-check_and_install("matplotlib")
 
 # Now you can safely import the required packages
 import seaborn as sns
