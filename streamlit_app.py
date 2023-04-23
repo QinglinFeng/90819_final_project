@@ -2,14 +2,11 @@ import importlib.util
 import subprocess
 import sys
 
-def check_and_install(package, upgrade=False):
+def check_and_install(package):
     spec = importlib.util.find_spec(package)
-    if spec is None or upgrade:
-        if upgrade:
-            print(f"Upgrading {package}...")
-        else:
-            print(f"{package} not found. Installing...")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--upgrade" if upgrade else ""])
+    if spec is None:
+        print(f"{package} not found. Installing...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
     else:
         print(f"{package} is already installed.")
 
@@ -17,14 +14,11 @@ def check_and_install(package, upgrade=False):
 check_and_install("seaborn")
 check_and_install("matplotlib")
 
-# Upgrade pandas to the latest version
-check_and_install("pandas", upgrade=True)
-
 # Now you can safely import the required packages
-import pandas as pd
-import streamlit as st
 import seaborn as sns
 import matplotlib.pyplot as plt
+import pandas as pd
+import streamlit as st
 
 
 # Load data
